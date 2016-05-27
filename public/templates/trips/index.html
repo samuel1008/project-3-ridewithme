@@ -1,6 +1,15 @@
 <h2>Trips!</h2>
 <hr>
 
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6">
+      <ui-gmap-google-map center="tripsIndexCtrl.map.center" zoom="tripsIndexCtrl.map.zoom">
+      </ui-gmap-google-map>
+    </div>
+  </div>
+</div>
+
 
 <p ng-if="!tripsIndexCtrl.trips.length">No trips yet.</p>
 

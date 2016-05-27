@@ -1,7 +1,8 @@
 angular
   .module('RideWithMe', [
     'ngRoute',
-    'satellizer'
+    'satellizer',
+    'uiGmapgoogle-maps'
   ])
   .controller('MainController', MainController)
   .controller('TripsIndexController', TripsIndexController)
