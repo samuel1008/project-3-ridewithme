@@ -1,0 +1,5 @@
+<h2>{{tripsShowCtrl.trip.title}}</h2>
+<p>{{tripsShowCtrl.trip.content}}</p>
+<a class="btn btn-primary"
+    ng-href="/trips/{{tripsShowCtrl.trip._id}}/edit"
+    ng-show="tripsShowCtrl.trip.user._id === main.currentUser.user_id">Edit Trip</a>

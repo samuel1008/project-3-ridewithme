@@ -1,0 +1,15 @@
+<h2>Trips!</h2>
+<hr>
+
+
+<p ng-if="!tripsIndexCtrl.trips.length">No trips yet.</p>
+
+<div ng-if="tripsIndexCtrl.trips.length">
+  <div ng-repeat="trip in tripsIndexCtrl.trips">
+    <p>
+      <strong><a ng-href="/trips/{{trip._id}}">{{trip.title}}</a></strong> - {{trip.content}} -- {{trip.user.displayName}}
+    </p>
+  </div>
+</div>
+
+<a class="btn btn-primary btn-block" href="/trips/new" ng-show="main.currentUser.isLoggedIn()">Add New Trip</a>
