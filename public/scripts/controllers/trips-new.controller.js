@@ -8,7 +8,7 @@ function TripsNewController ($location, $http) {
 
   function create() {
     $http
-      .trip('/api/trips', vm.trip)
+      .post('/api/trips', vm.trip)
       .then(onCreateSuccess, onCreateError);
 
     function onCreateSuccess(response){

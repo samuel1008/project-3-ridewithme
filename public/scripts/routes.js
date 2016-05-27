@@ -11,7 +11,7 @@ function configRoutes($routeProvider, $locationProvider) {
     .when('/', {
       templateUrl: 'templates/trips/index.html',
       controller: 'TripsIndexController',
-      controllerAs: 'TripsIndexCtrl'
+      controllerAs: 'tripsIndexCtrl'
     })
     .when('/signup', {
       templateUrl: 'templates/user/signup.html',
@@ -52,7 +52,7 @@ function configRoutes($routeProvider, $locationProvider) {
     .when('/trips/new', {
       templateUrl: 'templates/trips/new.html',
       controller: 'TripsNewController',
-      controllerAs: 'TripsNewCtrl',
+      controllerAs: 'tripsNewCtrl',
       resolve: {
         loginRequired: loginRequired
       }
