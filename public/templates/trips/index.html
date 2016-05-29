@@ -1,24 +1,63 @@
-<h2>Trips!</h2>
-<hr>
 
 <div class="container">
   <div class="row">
-    <div class="col-sm-6">
+    <div class="col-md-12">
+      <h2>Trips!</h2>
+      <hr>
       <ui-gmap-google-map center="tripsIndexCtrl.map.center" zoom="tripsIndexCtrl.map.zoom">
       </ui-gmap-google-map>
     </div>
   </div>
 </div>
+<br />
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+    <p ng-if="!tripsIndexCtrl.trips.length">No trips yet.</p>
+    <div ng-if="tripsIndexCtrl.trips.length">
+      <div ng-repeat="trip in tripsIndexCtrl.trips">
+
+        <!-- accordian -->
+
+        <script type="text/ng-template" id="group-template.html">
+          <div class="panel {{panelClass || 'panel-default'}}">
+            <div class="panel-heading">
+              <h4 class="panel-title" style="color:#fa39c3">
+                <a href tabindex="0" class="accordion-toggle" ng-click="toggleOpen()" uib-accordion-transclude="heading">
+                  <span uib-accordion-header ng-class="{'text-muted': isDisabled}">
+                    {{heading}}
+                  </span>
+                </a>
+              </h4>
+            </div>
+            <div class="panel-collapse collapse" uib-collapse="!isOpen">
+              <div class="panel-body" style="text-align: right" ng-transclude></div>
+            </div>
+          </div>
+          </script>
+          <uib-accordion close-others="oneAtATime">
+          <uib-accordion-group heading="{{trip.title}}" is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled">
+            {{trip.when}} -- {{trip.user.displayName}}
+          </uib-accordion-group>
+        </uib-accordion>
+        <!-- accordian -->
 
 
-<p ng-if="!tripsIndexCtrl.trips.length">No trips yet.</p>
-
-<div ng-if="tripsIndexCtrl.trips.length">
-  <div ng-repeat="trip in tripsIndexCtrl.trips">
-    <p>
-      <strong><a ng-href="/trips/{{trip._id}}">{{trip.title}}</a></strong> - {{trip.content}} -- {{trip.user.displayName}}
-    </p>
+      </div>
+    </div>
+  </div>
+    <div class="col-md-6 pull-right">
+      <a class="btn btn-primary btn-block pull-right" href="/trips/new" ng-show="main.currentUser.isLoggedIn()">Add New Trip</a>
+    </div>
   </div>
 </div>
 
-<a class="btn btn-primary btn-block" href="/trips/new" ng-show="main.currentUser.isLoggedIn()">Add New Trip</a>
+
+        <!-- delete -->
+        <div ng-repeat="trip in tripsIndexCtrl.trips">
+           <p>
+             <strong><a ng-href="/trips/{{trip._id}}">{{trip.user.displayName}}</a></strong> - {{tripsNewCtrl.trip.date}} -- {{trip.user.displayName}}
+           </p>
+         </div>
+       </div>
+        <!-- delete -->

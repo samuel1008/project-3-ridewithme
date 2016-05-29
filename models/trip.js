@@ -4,7 +4,7 @@ var mongoose = require('mongoose'),
 var tripSchema = new Schema({
   user: { type: Schema.Types.ObjectId, ref: 'User' },
   title: String,
-  date: String
+  when: Date
 });
 
 var Trip = mongoose.model('Trip', tripSchema);

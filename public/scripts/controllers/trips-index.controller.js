@@ -13,6 +13,9 @@ function TripsIndexController ($http) {
       .get('/api/trips')
       .then(function onSuccess(response) {
         vm.trips = response.data;
+        console.log(response.data);
       });
   }
+
+
 }

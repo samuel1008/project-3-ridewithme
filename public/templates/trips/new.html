@@ -1,7 +1,6 @@
 <form ng-submit="tripsNewCtrl.create()">
   <div class="form-group">
     <input type="text" class="form-control" placeholder="Title" ng-model="tripsNewCtrl.trip.title">
+    <input type="date" ng-model="tripsNewCtrl.trip.when">
   </div>
-  <p>Date: <input type="text" id="datepicker"></p>
-  <input type="submit" value="Create Trip" class="btn btn-block btn-info">
 </form>
