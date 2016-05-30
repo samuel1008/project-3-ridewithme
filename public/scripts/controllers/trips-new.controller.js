@@ -4,8 +4,6 @@ function TripsNewController ($location, $http) {
   vm.create = create;
   vm.trip = {}; // form data
 
-  ////
-
   function create() {
     $http
       .post('/api/trips', vm.trip)

@@ -1,7 +1,10 @@
 angular
   .module('RideWithMe', [
     'ngRoute',
-    'satellizer'
+    'satellizer',
+    'uiGmapgoogle-maps',
+    'ngAnimate',
+    'ui.bootstrap'
   ])
   .controller('MainController', MainController)
   .controller('TripsIndexController', TripsIndexController)

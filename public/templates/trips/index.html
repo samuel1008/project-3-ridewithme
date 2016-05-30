@@ -1,15 +1,43 @@
-<h2>Trips!</h2>
-<hr>
 
-
-<p ng-if="!tripsIndexCtrl.trips.length">No trips yet.</p>
-
-<div ng-if="tripsIndexCtrl.trips.length">
-  <div ng-repeat="trip in tripsIndexCtrl.trips">
-    <p>
-      <strong><a ng-href="/trips/{{trip._id}}">{{trip.title}}</a></strong> - {{trip.content}} -- {{trip.user.displayName}}
-    </p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h2>Trips!</h2>
+      <hr>
+      <ui-gmap-google-map center="tripsIndexCtrl.map.center" zoom="tripsIndexCtrl.map.zoom">
+      </ui-gmap-google-map>
+    </div>
   </div>
 </div>
+<br />
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+    <p ng-if="!tripsIndexCtrl.trips.length">No trips yet.</p>
+    <div ng-if="tripsIndexCtrl.trips.length">
+      <div ng-repeat="trip in tripsIndexCtrl.trips">
 
-<a class="btn btn-primary btn-block" href="/trips/new" ng-show="main.currentUser.isLoggedIn()">Add New Trip</a>
+        <!-- accordian -->
+        <script type="text/ng-template" id="group-template.html">
+          <div class="panel {{panelClass || 'panel-default'}}">
+            <div class="panel-collapse collapse" uib-collapse="!isOpen">
+              <div class="panel-body" style="text-align: right" ng-transclude></div>
+            </div>
+          </div>
+          </script>
+          <uib-accordion close-others="oneAtATime">
+          <uib-accordion-group heading="{{trip.title}}" is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled">
+            <p>
+              <strong><a ng-href="/trips/{{trip._id}}">{{trip.when}}</a></strong> - {{trip.user.displayName}}
+            </p>
+          </uib-accordion-group>
+        </uib-accordion>
+        <!-- accordian -->
+      </div>
+    </div>
+  </div>
+    <div class="col-md-6 pull-right">
+      <a class="btn btn-primary btn-block pull-right" href="/trips/new" ng-show="main.currentUser.isLoggedIn()">Add New Trip</a>
+    </div>
+  </div>
+</div>
