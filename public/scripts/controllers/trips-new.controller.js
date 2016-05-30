@@ -3,12 +3,6 @@ function TripsNewController ($location, $http) {
   var vm = this;
   vm.create = create;
   vm.trip = {}; // form data
-  vm.date = date;
-
-  function date() {
-    vm.date = new Date();
-  }
-
 
   function create() {
     $http

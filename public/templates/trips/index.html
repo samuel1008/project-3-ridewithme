@@ -18,18 +18,8 @@
       <div ng-repeat="trip in tripsIndexCtrl.trips">
 
         <!-- accordian -->
-
         <script type="text/ng-template" id="group-template.html">
           <div class="panel {{panelClass || 'panel-default'}}">
-            <div class="panel-heading">
-              <h4 class="panel-title" style="color:#fa39c3">
-                <a href tabindex="0" class="accordion-toggle" ng-click="toggleOpen()" uib-accordion-transclude="heading">
-                  <span uib-accordion-header ng-class="{'text-muted': isDisabled}">
-                    {{heading}}
-                  </span>
-                </a>
-              </h4>
-            </div>
             <div class="panel-collapse collapse" uib-collapse="!isOpen">
               <div class="panel-body" style="text-align: right" ng-transclude></div>
             </div>
@@ -37,12 +27,12 @@
           </script>
           <uib-accordion close-others="oneAtATime">
           <uib-accordion-group heading="{{trip.title}}" is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled">
-            {{trip.when}} -- {{trip.user.displayName}}
+            <p>
+              <strong><a ng-href="/trips/{{trip._id}}">{{trip.when}}</a></strong> - {{trip.user.displayName}}
+            </p>
           </uib-accordion-group>
         </uib-accordion>
         <!-- accordian -->
-
-
       </div>
     </div>
   </div>
@@ -51,13 +41,3 @@
     </div>
   </div>
 </div>
-
-
-        <!-- delete -->
-        <div ng-repeat="trip in tripsIndexCtrl.trips">
-           <p>
-             <strong><a ng-href="/trips/{{trip._id}}">{{trip.user.displayName}}</a></strong> - {{tripsNewCtrl.trip.date}} -- {{trip.user.displayName}}
-           </p>
-         </div>
-       </div>
-        <!-- delete -->
