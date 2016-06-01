@@ -27,6 +27,7 @@ app.use(logger('dev'));
 var usersCtrl = controllers.users;
 app.post('/auth/signup', usersCtrl.signup);
 app.post('/auth/login', usersCtrl.login);
+
 app.get('/api/me', auth.ensureAuthenticated, usersCtrl.showCurrentUser);
 app.put('/api/me', auth.ensureAuthenticated, usersCtrl.updateCurrentUser);
 

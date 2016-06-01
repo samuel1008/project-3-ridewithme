@@ -5,7 +5,7 @@
       <h2>Trips!</h2>
       <hr>
       <ui-gmap-google-map center="tripsIndexCtrl.map.center" zoom="tripsIndexCtrl.map.zoom">
-        <ui-gmap-marker coords="tripsIndexCtrl.marker.coords" idkey='1'>
+        <ui-gmap-marker coords="{latitude: tripsIndexCtrl.trips.latitude, longitude: tripsIndexCtrl.trips.longitude" idkey='trip._id'>
         </ui-gmap-marker>
       </ui-gmap-google-map>
     </div>
