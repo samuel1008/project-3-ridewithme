@@ -27,7 +27,6 @@ app.use(logger('dev'));
 var usersCtrl = controllers.users;
 app.post('/auth/signup', usersCtrl.signup);
 app.post('/auth/login', usersCtrl.login);
-
 app.get('/api/me', auth.ensureAuthenticated, usersCtrl.showCurrentUser);
 app.put('/api/me', auth.ensureAuthenticated, usersCtrl.updateCurrentUser);
 
@@ -36,12 +35,14 @@ app.put('/api/me', auth.ensureAuthenticated, usersCtrl.updateCurrentUser);
  */
 
 var tripsCtrl = controllers.trips;
+
 app.get('/api/trips', tripsCtrl.index);
 app.post('/api/trips', auth.ensureAuthenticated, tripsCtrl.create);
 app.get('/api/trips/:id', tripsCtrl.show);
 app.put('/api/trips/:id', auth.ensureAuthenticated, tripsCtrl.update);
 app.delete('/api/trips/:id', auth.ensureAuthenticated, tripsCtrl.destroy);
-
+app.get('/api/users', tripsCtrl.getUser);
+console.log(tripsCtrl);
 
 /*
  * Catch All Route

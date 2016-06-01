@@ -15,6 +15,7 @@ function TripsShowController ($location, $http, $routeParams) {
 
     function onGetSuccess(response){
       vm.trip = response.data;
+      console.log(vm.trip);
     }
 
     function onGetError(response){

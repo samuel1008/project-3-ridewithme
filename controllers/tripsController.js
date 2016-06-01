@@ -3,6 +3,13 @@ var db = require('../models'),
     User = db.User,
     Trip = db.Trip;
 
+
+function getUser(req, res) {
+  db.User.find({}, function(err, allUsers) {
+      res.json(allUsers);
+    });
+}
+
 function index(req, res) {
   Trip
     .find({})
@@ -80,5 +87,6 @@ module.exports = {
   create: create,
   show: show,
   update: update,
-  destroy: destroy
+  destroy: destroy,
+  getUser: getUser
 };
