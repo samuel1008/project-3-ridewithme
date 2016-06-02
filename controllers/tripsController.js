@@ -24,11 +24,23 @@ function index(req, res) {
 
 function create(req, res){
   var new_trip = new Trip(req.body);
+  // setGroupTrip(new_trip.group);
+  // console.log("YOOOOO",new_trip);
   new_trip.user = req.user_id;
   new_trip.save(function(err, new_trip){
     res.send(new_trip);
   });
 }
+// function setGroupTrip(array){
+//   array.forEach(function(e){
+//     var query = {
+//       _id: e._id
+//     };
+//     var user = db.User.findOne(query);
+//     console.log("HELLO", user);
+//     user.trips.push(new_trip._id);
+//   });
+// }
 
 function show(req, res){
   Trip

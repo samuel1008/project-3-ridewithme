@@ -10,18 +10,18 @@ function TripsIndexController ($http) {
     zoom: 12
   };
   vm.oneAtATime = true;
+  vm.isCentered = isCentered;
 
 
   query(); // fetch all the trips (index)
 
 
-
   ////
-  function isCentered() {
+  function isCentered(trip) {
     console.log("CLICKED");
     console.log("trip",trip);
-    vm.map.center.latitude = trip.geometry.location.lat;
-    vm.map.center.longitude = trip.geometry.location.lng;
+    vm.map.center.latitude = trip.where.geometry.location.lat;
+    vm.map.center.longitude = trip.where.geometry.location.lng;
   }
 
   function query() {

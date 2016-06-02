@@ -53,9 +53,9 @@ app.get(['/', '/signup', '/login', '/logout', '/profile', '/trips*'], function (
 
 
 /*
- * Listen on localhost:9000
+ * Listen on localhost:3000
  */
-var port = process.env.PORT || 9000;
+var port = process.env.PORT || 3000;
 app.listen(port, function() {
   console.log('server started on port ', port);
 });

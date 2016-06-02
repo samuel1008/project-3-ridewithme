@@ -29,18 +29,19 @@
         <!-- accordian -->
         <script type="text/ng-template" id="group-template.html">
           <div class="panel {{panelClass || 'panel-default'}}">
-            <div class="panel-collapse collapse" uib-collapse="!isOpen">
+            <div class="panel-collapse collapse" uib-collapse="tripsIndexCtrl.!isOpen">
               <div class="panel-body" style="text-align: right" ng-transclude></div>
             </div>
           </div>
           </script>
-          <uib-accordion close-others="oneAtATime">
+          <uib-accordion close-others="tripsIndexCtrl.oneAtATime">
             <uib-accordion-group>
               <uib-accordion-heading>
                 <span ng-click="tripsIndexCtrl.isCentered(trip)">{{trip.title}}</span>
               </uib-accordion-heading>
+              <!-- content -->
               <p>
-                <strong><a ng-href="/trips/{{trip._id}}">{{trip.when}} </strong> - {{trip.user.displayName}}</a>
+                <strong><a ng-href="/trips/{{trip._id}}">{{trip.when | date: 'MMM dd'}} </strong> - {{trip.user.displayName}}</a>
               </p>
           </uib-accordion-group>
         </uib-accordion>

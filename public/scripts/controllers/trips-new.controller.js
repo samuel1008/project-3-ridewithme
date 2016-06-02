@@ -6,7 +6,7 @@ function TripsNewController ($location, $http, UserService) {
   vm.trip = {}; // form data
   vm.group = [];
   vm.isCollapsed = isCollapsed;
-  vm.driver = {};
+  vm.trip.driver = {};
 
   query();
 
@@ -18,14 +18,13 @@ function TripsNewController ($location, $http, UserService) {
   }
 
   vm.addDriver = function(e){
-    vm.driver = UserService.user;
+    vm.trip.driver.user = UserService.user;
   };
 
 
   function create() {
     vm.trip.group = vm.group;
-    vm.trip.driver = vm.driver;
-    vm.trip.driver.passengers = vm.selectedNumber;
+      vm.trip.driver.passengers = vm.selectedNumber;
     $http
       .post('/api/trips', vm.trip)
       .then(onCreateSuccess, onCreateError);

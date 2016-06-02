@@ -1,7 +1,8 @@
-<h2>{{tripsShowCtrl.trip.title}}</h2>
-<p>{{tripsShowCtrl.trip.where.formatted_address}}</p>
+<h2>{{tripsShowCtrl.trip.title}} on {{tripsShowCtrl.trip.when}}</h2>
+<p>Location: {{tripsShowCtrl.trip.where.formatted_address}}</p>
+<p>Invited:</p>
 <div ng-repeat="group in tripsShowCtrl.trip.group">
-<p>{{group.displayName}}</p>
+    <li>{{group.displayName}}</li>
 </div>
 <a class="btn btn-primary"
     ng-href="/trips/{{tripsShowCtrl.trip._id}}/edit"

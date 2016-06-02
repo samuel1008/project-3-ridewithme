@@ -8,6 +8,7 @@ var tripSchema = new Schema({
   where: {},
   group: [],
   driver: {
+    user: {},
     passengers: Number
   }
 });
