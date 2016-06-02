@@ -1,14 +1,23 @@
-
+<!-- map -->
 <div class="container">
   <div class="row">
     <div class="col-md-12">
       <h2>Trips!</h2>
       <hr>
       <ui-gmap-google-map center="tripsIndexCtrl.map.center" zoom="tripsIndexCtrl.map.zoom">
+        <ui-gmap-marker ng-repeat="trip in tripsIndexCtrl.trips" coords="{latitude: trip.where.geometry.location.lat, longitude: trip.where.geometry.location.lng}" idkey="$index">
+            <ui-gmap-window>
+              <div>
+                <h4><a ng-href="/trips/{{trip._id}}">{{trip.title}}</a></h4>
+                <p> on {{trip.when}}</p>
+              </div>
+            </ui-gmap-window>
+          </ui-gmap-marker>
       </ui-gmap-google-map>
     </div>
   </div>
 </div>
+<!-- end of map -->
 <br />
 <div class="container">
   <div class="row">
@@ -20,16 +29,20 @@
         <!-- accordian -->
         <script type="text/ng-template" id="group-template.html">
           <div class="panel {{panelClass || 'panel-default'}}">
-            <div class="panel-collapse collapse" uib-collapse="!isOpen">
+            <div class="panel-collapse collapse" uib-collapse="tripsIndexCtrl.!isOpen">
               <div class="panel-body" style="text-align: right" ng-transclude></div>
             </div>
           </div>
           </script>
-          <uib-accordion close-others="oneAtATime">
-          <uib-accordion-group heading="{{trip.title}}" is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled">
-            <p>
-              <strong><a ng-href="/trips/{{trip._id}}">{{trip.when}}</a></strong> - {{trip.user.displayName}}
-            </p>
+          <uib-accordion close-others="tripsIndexCtrl.oneAtATime">
+            <uib-accordion-group>
+              <uib-accordion-heading>
+                <span ng-click="tripsIndexCtrl.isCentered(trip)">{{trip.title}}</span>
+              </uib-accordion-heading>
+              <!-- content -->
+              <p>
+                <strong><a ng-href="/trips/{{trip._id}}">{{trip.when | date: 'MMM dd'}} </strong> - {{trip.user.displayName}}</a>
+              </p>
           </uib-accordion-group>
         </uib-accordion>
         <!-- accordian -->

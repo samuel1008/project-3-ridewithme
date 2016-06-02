@@ -4,7 +4,8 @@ angular
     'satellizer',
     'uiGmapgoogle-maps',
     'ngAnimate',
-    'ui.bootstrap'
+    'ui.bootstrap',
+    'google.places'
   ])
   .controller('MainController', MainController)
   .controller('TripsIndexController', TripsIndexController)

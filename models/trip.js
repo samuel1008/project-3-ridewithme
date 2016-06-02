@@ -4,7 +4,13 @@ var mongoose = require('mongoose'),
 var tripSchema = new Schema({
   user: { type: Schema.Types.ObjectId, ref: 'User' },
   title: String,
-  when: Date
+  when: Date,
+  where: {},
+  group: [],
+  driver: {
+    user: {},
+    passengers: Number
+  }
 });
 
 var Trip = mongoose.model('Trip', tripSchema);

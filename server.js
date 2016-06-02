@@ -35,12 +35,14 @@ app.put('/api/me', auth.ensureAuthenticated, usersCtrl.updateCurrentUser);
  */
 
 var tripsCtrl = controllers.trips;
+
 app.get('/api/trips', tripsCtrl.index);
 app.post('/api/trips', auth.ensureAuthenticated, tripsCtrl.create);
 app.get('/api/trips/:id', tripsCtrl.show);
 app.put('/api/trips/:id', auth.ensureAuthenticated, tripsCtrl.update);
 app.delete('/api/trips/:id', auth.ensureAuthenticated, tripsCtrl.destroy);
-
+app.get('/api/users', tripsCtrl.getUser);
+console.log(tripsCtrl);
 
 /*
  * Catch All Route
@@ -51,9 +53,9 @@ app.get(['/', '/signup', '/login', '/logout', '/profile', '/trips*'], function (
 
 
 /*
- * Listen on localhost:9000
+ * Listen on localhost:3000
  */
-var port = process.env.PORT || 9000;
+var port = process.env.PORT || 3000;
 app.listen(port, function() {
   console.log('server started on port ', port);
 });

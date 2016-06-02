@@ -46,7 +46,7 @@ function TripsEditController ($location, $http, $routeParams) {
     function onGetSuccess(response){
       vm.trip = response.data;
     }
-
+    
     function onGetError(response){
       console.error("Failed to get trip", response);
       $location.path("/");
