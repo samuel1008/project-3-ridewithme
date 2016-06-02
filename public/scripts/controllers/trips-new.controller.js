@@ -1,29 +1,31 @@
-TripsNewController.$inject = ["$location", "$http"]; // minification protection
-function TripsNewController ($location, $http) {
+TripsNewController.$inject = ["$location", "$http", "UserService"]; // minification protection
+function TripsNewController ($location, $http, UserService) {
   var vm = this;
   vm.create = create;
   vm.users = [];
   vm.trip = {}; // form data
   vm.group = [];
+  vm.isCollapsed = isCollapsed;
+  vm.driver = {};
 
   query();
 
-  // Add a Item to the list
-  // function group() {
-  //   var group= [];
-  //    var invite = vm.group.push({
-  //     name: vm.users.displayName,
-  //   });
-  //   vm.trip.push(invite);
-  // }
-    // remove an item
-  function remove(index) {
-   vm.users.splice(index, 1);
- }
+  vm.numbers = [1,2,3,4,5,6];
+  vm.selectedNumber = vm.numbers[0];
+
+  function isCollapsed() {
+    vm.isCollapsed = false;
+  }
+
+  vm.addDriver = function(e){
+    vm.driver = UserService.user;
+  };
 
 
   function create() {
     vm.trip.group = vm.group;
+    vm.trip.driver = vm.driver;
+    vm.trip.driver.passengers = vm.selectedNumber;
     $http
       .post('/api/trips', vm.trip)
       .then(onCreateSuccess, onCreateError);

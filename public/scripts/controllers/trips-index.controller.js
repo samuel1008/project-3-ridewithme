@@ -9,16 +9,20 @@ function TripsIndexController ($http) {
     },
     zoom: 12
   };
-  vm.marker = {
-    coords: {
-      latitude: 38,
-      longitude: -124
-    }
-  };
+  vm.oneAtATime = true;
+
 
   query(); // fetch all the trips (index)
 
+
+
   ////
+  function isCentered() {
+    console.log("CLICKED");
+    console.log("trip",trip);
+    vm.map.center.latitude = trip.geometry.location.lat;
+    vm.map.center.longitude = trip.geometry.location.lng;
+  }
 
   function query() {
     $http

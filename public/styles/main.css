@@ -1,1 +1,5 @@
 .angular-google-map-container { height: 400px; }
+.hide {
+  visibility: none;
+  display: none;
+}

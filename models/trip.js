@@ -6,8 +6,10 @@ var tripSchema = new Schema({
   title: String,
   when: Date,
   where: {},
-  group: []
-
+  group: [],
+  driver: {
+    passengers: Number
+  }
 });
 
 var Trip = mongoose.model('Trip', tripSchema);
